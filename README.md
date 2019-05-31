@@ -26,6 +26,15 @@ docker run \
 -it jekyll:ubuntu-18.04
 ```
 
+Run container on git bash using command below
+
+```docker
+docker run \
+-p 4000:4000 -p 35729:35729 \
+--volume="//c/repo/jekyll/:/c/repo/jekyll/" \
+-it jekyll:ubuntu-18.04
+```
+
 - navigate to the source code `cd /c/repo/jekyll/myblog/` inside container
 - run the command `bundle install`
 - serve the app `bundle exec jekyll serve --host 0.0.0.0 --force-polling`

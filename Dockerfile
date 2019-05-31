@@ -26,10 +26,20 @@ RUN \
 
 WORKDIR /c/repo/jekyll/myblog
 
-COPY /myblog /c/repo/jekyll/myblog
+COPY . /c/repo/jekyll/myblog
 
 RUN bundle install 
 
-# CMD ["bundle", "exec", "jekyll", "serve", "--host=0.0.0.0"]
+
+CMD ["bundle", "exec", "jekyll", "serve", "--baseurl=/","--drafts", "--host=0.0.0.0", "--force-polling"]
+# --force-pooling continiously monitors the changes and updates the deployment
+# drafts allows drafts to be available for viewing
 
 # docker build -t jekyll:ubuntu-18.04 .
+
+# ```docker
+# docker run \
+# -p 4000:4000 -p 35729:35729 \
+# --volume="//c/repo/jekyll/:/c/repo/jekyll/" \
+# -it jekyll:ubuntu-18.04
+# ```
